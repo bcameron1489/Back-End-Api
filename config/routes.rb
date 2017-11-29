@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :fantasy_players, except: %i[new edit]
-  resources :players, except: %i[new edit]
+  resources :players, only: %i[index show]
   # make players read only once user team is created
   resources :examples, except: %i[new edit]
   post '/sign-up' => 'users#signup'
