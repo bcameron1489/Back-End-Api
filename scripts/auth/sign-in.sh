@@ -15,3 +15,4 @@ curl "${API}${URL_PATH}" \
   }'
 
 echo
+# EMAIL=ava@bob.com PASSWORD=hannah  PASSWORD_CONFIRMATION=hannah scripts/auth/sign-in.sh

@@ -15,3 +15,4 @@ curl "${API}${URL_PATH}/${ID}" \
   }'
 
 echo
+# ID=1 OLD=hannah NEW=1 TOKEN={INSERT TOKEN NO BRACES} scripts/auth/change-password.sh
