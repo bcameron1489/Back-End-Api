@@ -2496,3 +2496,186 @@ Processing by UsersController#signout as */*
 Completed 204 No Content in 30ms (ActiveRecord: 12.7ms)
 
 
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 15:18:08 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"FUNFUN", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "FUNFUN"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "FUNFUN"], ["token", "0b17f6fafbc09e2d891bef31f3bf1838"], ["password_digest", "$2a$10$mclrGihuFzzd.aioXT8VCe7UdJaWuBLDU0ggp0uGk6yRn9SFLsoMK"], ["created_at", "2017-11-30 20:18:08.927779"], ["updated_at", "2017-11-30 20:18:08.927779"]]
+  [1m[35m (16.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "FUNFUN"], ["id", 11], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (0.41ms)
+Completed 201 Created in 231ms (Views: 1.8ms | ActiveRecord: 35.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 15:18:36 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"FUNFUN", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "FUNFUN"], ["LIMIT", 1]]
+  [1m[35mSQL (24.0ms)[0m  [1m[33mUPDATE "users" SET "token" = '51dd849efbfd00cea909ebe2310ed46a', "updated_at" = '2017-11-30 20:18:36.141733' WHERE "users"."id" = $1[0m  [["id", 11]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.5ms)
+Completed 200 OK in 149ms (Views: 1.4ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/players" for 127.0.0.1 at 2017-11-30 15:20:11 -0500
+Processing by PlayersController#index as HTML
+  [1m[36mPlayer Load (0.4ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.21ms)
+Completed 200 OK in 35ms (Views: 26.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 15:21:27 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"name"=>"", "team"=>"", "bye"=>""}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "51dd849efbfd00cea909ebe2310ed46a"], ["LIMIT", 1]]
+Unpermitted parameters: :name, :team, :bye
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.08ms)
+Completed 422 Unprocessable Entity in 44ms (Views: 2.6ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 15:24:01 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"name"=>"", "team"=>"", "bye"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "51dd849efbfd00cea909ebe2310ed46a"], ["LIMIT", 1]]
+Unpermitted parameters: :name, :team, :bye
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.49ms)
+Completed 422 Unprocessable Entity in 103ms (Views: 11.2ms | ActiveRecord: 17.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 16:12:09 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (21.5ms)[0m  [1m[33mUPDATE "users" SET "token" = '10d7c9251ce691fa80274f0c95cf4f6c', "updated_at" = '2017-11-30 21:12:09.973912' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 169ms (Views: 0.6ms | ActiveRecord: 22.2ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 16:13:34 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (31.5ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a2d92ed8c33b22c336bd55600cb6d139', "updated_at" = '2017-11-30 21:13:34.727601' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.28ms)
+Completed 200 OK in 179ms (Views: 1.6ms | ActiveRecord: 33.0ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:13:38 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"submit"=>"Add", "player"=>{"target"=>"yes"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "a2d92ed8c33b22c336bd55600cb6d139"], ["LIMIT", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: fantasy_player):
+  
+app/controllers/fantasy_players_controller.rb:49:in `fantasy_player_params'
+app/controllers/fantasy_players_controller.rb:18:in `create'
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 16:34:44 -0500
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"FUNFUN", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "FUNFUN"], ["LIMIT", 1]]
+  [1m[35mSQL (21.5ms)[0m  [1m[33mUPDATE "users" SET "token" = '5100a7248441c4d6b3fbacd5ba1a2477', "updated_at" = '2017-11-30 21:34:45.334753' WHERE "users"."id" = $1[0m  [["id", 11]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (22.23ms)
+Completed 200 OK in 303ms (Views: 135.6ms | ActiveRecord: 26.9ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:35:37 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "user_id"=>"11", "target"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :player_id, :user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.32ms)
+Completed 422 Unprocessable Entity in 150ms (Views: 14.0ms | ActiveRecord: 13.3ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:36:37 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "user_id"=>"11", "target"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :player_id, :user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.08ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 0.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:38:03 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"name"=>"DIRK", "team"=>"DIGGLER", "bye"=>"3"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :name, :team, :bye
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.2ms)
+Completed 422 Unprocessable Entity in 8ms (Views: 1.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:45:55 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"name"=>"DIRK", "team"=>"DIGGLER", "bye"=>"3"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :name, :team, :bye
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.11ms)
+Completed 422 Unprocessable Entity in 9ms (Views: 1.0ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:47:28 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "user_id"=>"11", "target"=>"sure"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :player_id, :user_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.23ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 16:47:51 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "user_id"=>"11", "target"=>"sure"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameters: :player_id, :user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.18ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 17:28:33 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "target"=>"yes"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+Unpermitted parameter: :player_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/fantasy_players" for 127.0.0.1 at 2017-11-30 17:30:26 -0500
+Processing by FantasyPlayersController#create as */*
+  Parameters: {"fantasy_player"=>{"player_id"=>"3", "target"=>"yes"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "5100a7248441c4d6b3fbacd5ba1a2477"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlayer Load (0.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (59.2ms)[0m  [1m[32mINSERT INTO "fantasy_players" ("target", "created_at", "updated_at", "user_id", "player_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["target", "yes"], ["created_at", "2017-11-30 22:30:26.739220"], ["updated_at", "2017-11-30 22:30:26.739220"], ["user_id", 11], ["player_id", 3]]
+  [1m[35m (19.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered FantasyPlayerSerializer with ActiveModelSerializers::Adapter::Json (1.14ms)
+Completed 201 Created in 125ms (Views: 8.0ms | ActiveRecord: 84.2ms)
+
+

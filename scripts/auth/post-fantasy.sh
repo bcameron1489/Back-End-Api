@@ -6,9 +6,8 @@ curl http://localhost:4741/fantasy_players \
   --data '{
     "fantasy_player": {
       "player_id": "'"${PLAYERID}"'",
-      "user_id": "'"${USERID}"'",
       "target": "'"${TARGET}"'"
     }
   }'
 
-# USERID=6 PLAYERID=3 TOKEN=BAhJIiU1YTg2OGViNzdmNjY2MWFjMzkzOGMwNzRiYTA5NmY1NwY6BkVG--8ec7acfa236abd112d67883d0e5642dd0d3d8309 sh
+# PLAYERID=3 TARGET=yes TOKEN=BAhJIiU1MTAwYTcyNDg0NDFjNGQ2YjNmYmFjZDViYTFhMjQ3NwY6BkVG--8f7eaf9b9151cfff5e017c8c982eebef848c7258 sh

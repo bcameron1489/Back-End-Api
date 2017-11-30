@@ -1,4 +1,4 @@
-class FantasyPlayersController < OpenReadController
+class FantasyPlayersController < ProtectedController
   before_action :set_fantasy_player, only: [:show, :update, :destroy]
 
   # GET /fantasy_players
@@ -46,6 +46,6 @@ class FantasyPlayersController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def fantasy_player_params
-      params.require(:fantasy_player).permit(:target)
+      params.require(:fantasy_player).permit(:target, :player_id)
     end
 end
