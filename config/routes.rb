@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :fantasy_players, except: %i[new edit]
   resources :players, only: %i[index show]
   # make players read only once user team is created
   resources :examples, except: %i[new edit]

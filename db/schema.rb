@@ -23,20 +23,14 @@ ActiveRecord::Schema.define(version: 20171129170545) do
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
 
-  create_table "fantasy_players", force: :cascade do |t|
-    t.boolean "starting"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "player_id"
-    t.index ["player_id"], name: "index_fantasy_players_on_player_id"
-  end
-
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "team"
     t.integer "bye"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_players_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,10 +39,13 @@ ActiveRecord::Schema.define(version: 20171129170545) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "player_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["player_id"], name: "index_users_on_player_id"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "examples", "users"
-  add_foreign_key "fantasy_players", "players"
+  add_foreign_key "players", "users", column: "users_id"
+  add_foreign_key "users", "players"
 end
