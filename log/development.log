@@ -1018,3 +1018,51 @@ Processing by PlayersController#index as HTML
 Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.7ms)
 
 
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-29 21:27:02 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signup as */*
+  Parameters: {"submit"=>"Sign up!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "fdfd"], ["token", "10c1b43e6e0d76d3085484489416f4af"], ["password_digest", "$2a$10$.BCG5qF3gyE/MpUYwpEC8uPAZn1B.yEnygQPy3zxOodN22Wj/yr9."], ["created_at", "2017-11-30 02:27:03.011737"], ["updated_at", "2017-11-30 02:27:03.011737"]]
+  [1m[35m (17.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "fdfd"], ["id", 6], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (1.36ms)
+Completed 201 Created in 116ms (Views: 6.9ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/players" for 127.0.0.1 at 2017-11-29 22:00:14 -0500
+Processing by PlayersController#index as HTML
+  [1m[36mPlayer Load (0.9ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (0.57ms)
+Completed 200 OK in 45ms (Views: 19.8ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-11-29 22:00:20 -0500
+Processing by UsersController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-29 22:09:51 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (22.0ms)[0m  [1m[33mUPDATE "users" SET "token" = 'cafe37db84fd19b74bff4f7de0f06e8f', "updated_at" = '2017-11-30 03:09:51.088122' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (3.01ms)
+Completed 200 OK in 129ms (Views: 3.4ms | ActiveRecord: 25.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-29 22:24:05 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (26.7ms)[0m  [1m[33mUPDATE "users" SET "token" = 'f617c6d443cde28793eb9b03563e3b6d', "updated_at" = '2017-11-30 03:24:05.585034' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.16ms)
+Completed 200 OK in 149ms (Views: 0.5ms | ActiveRecord: 28.0ms)
+
+
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
