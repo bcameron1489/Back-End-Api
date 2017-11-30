@@ -1299,3 +1299,221 @@ Processing by UsersController#changepw as */*
 Completed 400 Bad Request in 204ms (ActiveRecord: 2.9ms)
 
 
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:17:40 -0500
+  [1m[35m (31.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"ham", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (50.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ham"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ham"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.38ms)
+Completed 400 Bad Request in 441ms (Views: 28.1ms | ActiveRecord: 107.2ms)
+
+
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:18:05 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"ham1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ham1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ham1"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.08ms)
+Completed 400 Bad Request in 91ms (Views: 0.5ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:21:08 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (30.8ms)[0m  [1m[33mUPDATE "users" SET "token" = 'b7994c8063728d44fc2e7c8b7b565e2c', "updated_at" = '2017-11-30 14:21:08.574405' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (19.31ms)
+Completed 200 OK in 249ms (Views: 59.8ms | ActiveRecord: 32.6ms)
+
+
+Started PATCH "/change-password/6" for 127.0.0.1 at 2017-11-30 09:23:02 -0500
+Processing by UsersController#changepw as */*
+  Parameters: {"passwords"=>"[FILTERED]", "id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "b7994c8063728d44fc2e7c8b7b565e2c"], ["LIMIT", 1]]
+Completed 400 Bad Request in 82ms (ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:34:16 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"submit"=>"Sign up!", "credentials"=>{"email"=>"fbc1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbc1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbc1"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 400 Bad Request in 81ms (Views: 0.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:35:10 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (34.0ms)[0m  [1m[33mUPDATE "users" SET "token" = 'e728baef55d11190b0092328694410e1', "updated_at" = '2017-11-30 14:35:10.791892' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 157ms (Views: 0.6ms | ActiveRecord: 35.1ms)
+
+
+Started DELETE "/sign-out/6" for 127.0.0.1 at 2017-11-30 09:35:12 -0500
+Processing by UsersController#signout as */*
+  Parameters: {"submit"=>"Sign out!", "id"=>"6"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "e728baef55d11190b0092328694410e1"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (28.1ms)[0m  [1m[33mUPDATE "users" SET "token" = '7b8ef830866f8508ca50062d013004b8', "updated_at" = '2017-11-30 14:35:12.318714' WHERE "users"."id" = $1[0m  [["id", 6]]
+Completed 204 No Content in 41ms (ActiveRecord: 31.2ms)
+
+
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:35:28 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"submit"=>"Sign up!", "credentials"=>{"email"=>"fbizz14", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizz14"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizz14"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 400 Bad Request in 130ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:39:12 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"submit"=>"Sign up!", "credentials"=>{"email"=>"fbizzel1414", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizzel1414"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizzel1414"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.15ms)
+Completed 400 Bad Request in 108ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:28 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (38.2ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a3e686373c7105cd390ea3b1f735ee20', "updated_at" = '2017-11-30 14:39:28.615332' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 146ms (Views: 0.7ms | ActiveRecord: 39.2ms)
+
+
+Started DELETE "/sign-out/6" for 127.0.0.1 at 2017-11-30 09:39:36 -0500
+Processing by UsersController#signout as */*
+  Parameters: {"submit"=>"Sign out!", "id"=>"6"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "a3e686373c7105cd390ea3b1f735ee20"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (32.6ms)[0m  [1m[33mUPDATE "users" SET "token" = '15c07b31deb1ca171e12d4e3e5a4ee7e', "updated_at" = '2017-11-30 14:39:36.765804' WHERE "users"."id" = $1[0m  [["id", 6]]
+Completed 204 No Content in 50ms (ActiveRecord: 35.5ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:44 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (32.0ms)[0m  [1m[33mUPDATE "users" SET "token" = '06016a8bedadae3aa35688d7a388a971', "updated_at" = '2017-11-30 14:39:44.316874' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 144ms (Views: 0.6ms | ActiveRecord: 33.3ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:44 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (28.1ms)[0m  [1m[33mUPDATE "users" SET "token" = 'b0cad76a9ff4433fa3d947cd09fe3e9b', "updated_at" = '2017-11-30 14:39:44.997746' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.33ms)
+Completed 200 OK in 120ms (Views: 0.7ms | ActiveRecord: 29.5ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:45 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (26.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '533664c9742a81d36db3c0a7bab4f48f', "updated_at" = '2017-11-30 14:39:45.629674' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 127ms (Views: 0.6ms | ActiveRecord: 27.6ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:45 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (9.2ms)[0m  [1m[33mUPDATE "users" SET "token" = 'e6d12bd85bdd56947c7eb2b826ab2dde', "updated_at" = '2017-11-30 14:39:45.802854' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 87ms (Views: 0.6ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:45 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (13.9ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a08d8ff033ea26969607a031502c1716', "updated_at" = '2017-11-30 14:39:46.007958' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 115ms (Views: 0.6ms | ActiveRecord: 15.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:46 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (7.4ms)[0m  [1m[33mUPDATE "users" SET "token" = '218b333fafefa0db1e5feb78b6a2abb7', "updated_at" = '2017-11-30 14:39:46.192474' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 92ms (Views: 0.7ms | ActiveRecord: 8.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-11-30 09:39:46 -0500
+Processing by UsersController#signin as */*
+  Parameters: {"submit"=>"Sign in!", "credentials"=>{"email"=>"fdfd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fdfd"], ["LIMIT", 1]]
+  [1m[35mSQL (15.8ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a1c3cdb1683f64f5f38149b432f74577', "updated_at" = '2017-11-30 14:39:46.360992' WHERE "users"."id" = $1[0m  [["id", 6]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 101ms (Views: 0.7ms | ActiveRecord: 16.6ms)
+
+
+Started POST "/sign-up" for 127.0.0.1 at 2017-11-30 09:41:44 -0500
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"fbizz141414", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizz141414"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fbizz141414"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 400 Bad Request in 85ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5154729243063530130)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveColumn (20171130150455)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130150455"]]
+  [1m[35m (20.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (40.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5154729243063530130)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5154729243063530130)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5154729243063530130)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5154729243063530130)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePlayerIdFromUsers (20171130152444)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (140.1ms)[0m  [1m[35mDROP INDEX  "index_users_on_player_id"[0m
+  [1m[35m (56.7ms)[0m  [1m[35mALTER TABLE "users" DROP "player_id"[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130152444"]]
+  [1m[35m (10.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5154729243063530130)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
