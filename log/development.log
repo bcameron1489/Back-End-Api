@@ -2685,3 +2685,5 @@ Completed 201 Created in 125ms (Views: 8.0ms | ActiveRecord: 84.2ms)
 
 >>>>>>> createauth
 DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /home/bcameron1489/wdi/projects/project2/Back-End-Api/config/initializers/new_framework_defaults.rb:18)
