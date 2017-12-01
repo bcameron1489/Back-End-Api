@@ -1,4 +1,4 @@
-class PlayersController < OpenReadController
+class PlayersController < ProtectedController
   # !!!!!!!!!!!!!!!!!!!!!!!!! edit once we get to auth... see documents/order on laptop
   before_action :set_player, only: [:show, :update, :destroy]
 
