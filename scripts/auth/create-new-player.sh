@@ -1,10 +1,10 @@
-curl http://localhost:4741/fantasy_players \
+curl http://localhost:4741/players \
   --include \
   --request POST \
   --header "Authorization: Token token=${TOKEN}" \
   --header "Content-Type: application/json" \
   --data '{
-    "fantasy_player": {
+    "player": {
       "name": "'"${NAME}"'",
       "team": "'"${TEAM}"'",
       "bye": "'"${BYE}"'"

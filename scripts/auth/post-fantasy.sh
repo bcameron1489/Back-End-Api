@@ -6,7 +6,6 @@ curl http://localhost:4741/fantasy_players \
   --data '{
     "fantasy_player": {
       "player_id": "'"${PLAYERID}"'",
-      "target": "'"${TARGET}"'"
     }
   }'
 

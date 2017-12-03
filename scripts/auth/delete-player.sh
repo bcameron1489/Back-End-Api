@@ -1,5 +1,5 @@
 API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/fantasy_players"
+URL_PATH="/players"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request DELETE \
